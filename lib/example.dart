@@ -66,7 +66,11 @@ class JsonExampleProvider extends InheritedWidget {
 }
 
 class JsonExampleCoder {
-  void encode() {}
+  void encode() {
+    final objects = humans.map((e) => e.toJson()).toList();
+    final jsonString = jsonEncode(objects);
+    print(jsonString);
+  }
 
   void decode() {
     final json = jsonDecode(jsonString) as List<dynamic>;
