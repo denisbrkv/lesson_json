@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'address.g.dart';
+
+@JsonSerializable()
 class Adress {
   final String city;
   final String street;
@@ -11,21 +16,6 @@ class Adress {
     required this.flat,
   });
 
-  factory Adress.fromJson(Map<String, dynamic> json) {
-    return Adress(
-      city: json['city'] as String,
-      street: json['street'] as String,
-      house: json['house'] as String,
-      flat: json['flat'] as int,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'city': city,
-      'street': street,
-      'house': house,
-      'flat': flat,
-    };
-  }
+  factory Adress.fromJson(Map<String, dynamic> json) => _$AdressFromJson(json);
+  Map<String, dynamic> toJson() => _$AdressToJson(this);
 }

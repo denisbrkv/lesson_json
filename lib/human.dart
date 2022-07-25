@@ -1,5 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:lesson_json/address.dart';
 
+part 'human.g.dart';
+
+@JsonSerializable()
 class Human {
   String name;
   String surname;
@@ -13,23 +17,6 @@ class Human {
     required this.addreses,
   });
 
-  factory Human.fromJson(Map<String, dynamic> json) {
-    return Human(
-      name: json['name'] as String,
-      surname: json['surname'] as String,
-      age: json['age'] as int,
-      addreses: (json['adreses'] as List<dynamic>)
-          .map((dynamic e) => Adress.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'name': name,
-      'surname': surname,
-      'age': age,
-      'adreses': addreses.map((e) => e.toJson()).toList(),
-    };
-  }
+  factory Human.fromJson(Map<String, dynamic> json) => _$HumanFromJson(json);
+  Map<String, dynamic> toJson() => _$HumanToJson(this);
 }
