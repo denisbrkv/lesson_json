@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:lesson_json/domain/api_clients/api_client.dart';
 import 'package:lesson_json/example_data.dart';
 import 'package:lesson_json/human.dart';
 
@@ -9,6 +10,7 @@ class Example extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ApiClient().getPosts();
     return Scaffold(
       body: SafeArea(
         child: JsonExampleProvider(
